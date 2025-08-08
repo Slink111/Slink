@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -35,6 +35,130 @@
                     <p class="lead text-muted">Transform long URLs into short, shareable links instantly</p>
                 </div>
 
+                <!-- URL Shortener Form -->
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form id="shortenForm" class="mb-4">
+                            <div class="mb-3">
+                                <label for="urlInput" class="form-label">Enter your URL</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i data-feather="link" class="feather-sm"></i>
+                                    </span>
+                                    <input 
+                                        type="url" 
+                                        class="form-control form-control-lg" 
+                                        id="urlInput" 
+                                        placeholder="https://example.com/very-long-url"
+                                        required
+                                        aria-describedby="urlHelp"
+                                    >
+                                </div>
+                                <div id="urlHelp" class="form-text">Enter a valid URL starting with http:// or https://</div>
+                                <div id="urlError" class="text-danger mt-2 d-none" role="alert"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100" id="shortenBtn">
+                                <span class="btn-text">
+                                    <i data-feather="scissors" class="feather-sm me-2"></i>
+                                    Shorten URL
+                                </span>
+                                <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                                <span class="loading-text d-none">Shortening...</span>
+                            </button>
+                        </form>
+
+                        <!-- Result Section -->
+                        <div id="resultSection" class="d-none">
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <i data-feather="check-circle" class="feather-sm me-2 text-success"></i>
+                                <div>
+                                    <strong>Success!</strong> Your URL has been shortened.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="shortUrl" class="form-label">Shortened URL</label>
+                                <div class="input-group">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="shortUrl" 
+                                        readonly
+                                        aria-label="Shortened URL"
+                                    >
+                                    <button class="btn btn-outline-secondary" type="button" id="copyBtn">
+                                        <i data-feather="copy" class="feather-sm me-1"></i>
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Click Count (if available) -->
+                            <div id="clickCount" class="d-none">
+                                <small class="text-muted">
+                                    <i data-feather="bar-chart-2" class="feather-sm me-1"></i>
+                                    Click count: <span id="clickCountValue">0</span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Error Alert -->
+                        <div id="errorAlert" class="alert alert-danger d-none" role="alert">
+                            <i data-feather="alert-circle" class="feather-sm me-2"></i>
+                            <span id="errorMessage"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10 col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3>Recent Links</h3>
+                    <button class="btn btn-outline-secondary btn-sm" id="clearHistoryBtn">
+                        <i data-feather="trash-2" class="feather-sm me-1"></i>
+                        Clear History
+                    </button>
+                </div>
+                
+                <div id="historyContainer">
+                    <div id="emptyHistory" class="text-center text-muted py-5">
+                        <i data-feather="inbox" class="feather-lg mb-3"></i>
+                        <p>No shortened links yet. Create your first one above!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i data-feather="check" class="feather-sm text-success me-2"></i>
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                URL copied to clipboard!
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Initialize Feather icons
+        feather.replace();
+    </script>
+</body>
+                                        </html>
                 <!-- URL Shortener Form -->
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
