@@ -1,0 +1,74 @@
+/* Custom styles for Slink URL Shortener */
+.feather-sm { width: 16px; height: 16px; }
+.feather-lg { width: 48px; height: 48px; }
+
+.btn { transition: all 0.2s ease-in-out; }
+.card { transition: box-shadow 0.2s ease-in-out; }
+.card:hover { box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important; }
+
+.form-control:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb),0.25);
+}
+
+.btn:disabled { opacity: 0.7; }
+.card-body .text-truncate { max-width: 100%; }
+.toast-container { z-index: 1055; }
+
+@media (max-width: 768px) {
+    .display-4 { font-size: 2rem; }
+    .btn-lg { padding: 0.75rem 1rem; font-size: 1rem; }
+    .card-body .d-flex.gap-2 { gap: 0.5rem !important; }
+}
+
+.copy-history-btn.copied {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+    color: white;
+}
+
+#emptyHistory { padding: 3rem 1rem; }
+#emptyHistory .feather-lg { opacity: 0.5; }
+
+.is-invalid { border-color: var(--bs-danger); }
+.is-invalid:focus {
+    border-color: var(--bs-danger);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-danger-rgb),0.25);
+}
+
+.alert-success { border-left: 4px solid var(--bs-success); }
+.spinner-border-sm { width: 1rem; height: 1rem; }
+
+.card-body:hover .btn-outline-secondary,
+.card-body:hover .btn-outline-danger { opacity: 1; }
+
+.btn-outline-secondary,
+.btn-outline-danger { opacity: 0.7; transition: opacity 0.2s ease-in-out; }
+
+.form-control.is-invalid ~ .form-text { color: var(--bs-danger); }
+.navbar-brand { display: flex; align-items: center; font-size: 1.5rem; }
+.hero-section { padding: 2rem 0; }
+#resultSection .alert { margin-bottom: 1.5rem; }
+#clickCount { margin-top: 0.5rem; font-size: 0.875rem; }
+.history-header {
+    border-bottom: 2px solid var(--bs-border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn:focus, .form-control:focus { outline: none; }
+.btn:focus-visible, .form-control:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+#resultSection { animation: slideIn 0.3s ease-out; }
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bs-dark); }
+::-webkit-scrollbar-thumb { background: var(--bs-secondary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bs-light); }
